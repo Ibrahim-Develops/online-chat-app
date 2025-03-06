@@ -1,5 +1,7 @@
 "use client"
 
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
+
 import Avatar from '../assets/avatar.jpeg'
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import { GrAttachment } from "react-icons/gr";
@@ -21,19 +23,39 @@ const Chat = () => {
 
 
     return (
-        <div className=''>
+        <div className='h-full'>
 
-            <div className='bg-[#1a1a1a] grow h-screen text-white px-5 rounded-2xl flex flex-col justify-between '>
-                <div className="pt-5 flex gap-5">
-                    <Image src={Avatar} alt='Avatar' className='rounded-full w-16 h-16' />
-                    <div className='flex flex-col gap-2 mx-4'>
-                        <div className='flex justify-between'>
-                            <h1 className='font-bold'>Jhon Wick</h1>
-                            <div>{currentTime}</div>
+            <div className='bg-[#1a1a1a] grow text-white px-5 rounded-2xl h-full flex flex-col justify-between '>
+                <AlertDialog>
+                    <div className="pt-5 flex gap-5">
+                        <AlertDialogTrigger>
+                            <Image src={Avatar} alt='Avatar' className='rounded-full w-46 h-20' />
+                        </AlertDialogTrigger>
+                        <div className='flex flex-col gap-2 mx-4'>
+                            <div className='flex justify-between'>
+                                <h1 className='font-bold'>Jhon Wick</h1>
+                                <div>{currentTime}</div>
+                            </div>
+                            <p className='font-thin'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, optio quam autem dolorem quod accusantium odit eius porro. Natus a quam corporis velit repellat iste ullam quia tenetur atque ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate vitae soluta error culpa, quo praesentium obcaecati ducimus deleniti exercitationem! Doloribus libero vitae ex sit aut ad omnis optio asperiores quidem voluptatibus! Exercitationem, soluta sit.</p>
                         </div>
-                        <p className='font-thin'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, optio quam autem dolorem quod accusantium odit eius porro. Natus a quam corporis velit repellat iste ullam quia tenetur atque ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate vitae soluta error culpa, quo praesentium obcaecati ducimus deleniti exercitationem! Doloribus libero vitae ex sit aut ad omnis optio asperiores quidem voluptatibus! Exercitationem, soluta sit.</p>
                     </div>
-                </div>
+
+                    <AlertDialogContent className="h-[48rem]">
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>
+                                <Image src={Avatar} alt='Avatar' className='rounded-full w-36 h-36' />
+                            </AlertDialogTitle>
+                            <AlertDialogDescription>
+                                This action cannot be undone. This will permanently delete your account
+                                and remove your data from our servers.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
+
 
                 <div className="flex justify-between items-center gap-5 w-full bg-[#303030] py-4 px-5 rounded-2xl bottom-5 mb-5">
                     <div className="flex justify-center items-center gap-5 w-full">
@@ -43,6 +65,8 @@ const Chat = () => {
                     <IoPaperPlaneOutline className="cursor-pointer text-2xl" />
                 </div>
             </div>
+
+
 
         </div>
     )
