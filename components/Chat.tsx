@@ -22,10 +22,10 @@ const Chat = () => {
 
     return (
         <div className=''>
-            <div className='bg-[#1a1a1a] grow h-screen text-white px-5 me-5 rounded-2xl flex flex-col justify-between '>
 
+            <div className='bg-[#1a1a1a] grow h-screen text-white px-5 rounded-2xl flex flex-col justify-between '>
                 <div className="pt-5 flex gap-5">
-                    <Image src={Avatar} alt='Avatar' className='rounded-full w-16 h-16'/>
+                    <Image src={Avatar} alt='Avatar' className='rounded-full w-16 h-16' />
                     <div className='flex flex-col gap-2 mx-4'>
                         <div className='flex justify-between'>
                             <h1 className='font-bold'>Jhon Wick</h1>
@@ -35,7 +35,6 @@ const Chat = () => {
                     </div>
                 </div>
 
-
                 <div className="flex justify-between items-center gap-5 w-full bg-[#303030] py-4 px-5 rounded-2xl bottom-5 mb-5">
                     <div className="flex justify-center items-center gap-5 w-full">
                         <GrAttachment className="cursor-pointer text-xl" />
@@ -44,6 +43,7 @@ const Chat = () => {
                     <IoPaperPlaneOutline className="cursor-pointer text-2xl" />
                 </div>
             </div>
+
         </div>
     )
 }
