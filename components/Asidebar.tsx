@@ -8,8 +8,8 @@ import Image from 'next/image'
 
 const Asidebar = () => {
     return (
-        <div className='py-5 px-5'>
-            <div className='flex flex-col justify-between py-5 px-5 bg-[#1a1a1a] rounded-2xl h-[96vh]'>
+        <div className='ps-5'>
+            <div className='flex flex-col justify-between py-5 px-5 bg-[#1a1a1a] rounded-2xl h-screen'>
                 <div className='flex flex-col gap-12'>
                     <div className='bg-[#f4feb1] w-14 h-14 flex justify-center items-center rounded-full'>
                         <Image src={Logo} alt='Logo' className='w-8' />
