@@ -34,7 +34,7 @@ const Chat = () => {
                         <div className='flex flex-col gap-2 mx-4'>
                             <div className='flex justify-between'>
                                 <h1 className='font-bold xl:text-xl'>Jhon Wick</h1>
-                                <div>{currentTime}</div>
+                                <div className="text-sm">{currentTime}</div>
                             </div>
                             <p className='font-thin text-sm lg:text-[16px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, optio quam autem dolorem quod accusantium odit eius porro. Natus a quam corporis velit repellat iste ullam quia tenetur atque ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate vitae soluta error culpa, quo praesentium obcaecati ducimus deleniti exercitationem! Doloribus libero vitae ex sit aut ad omnis optio asperiores quidem voluptatibus! Exercitationem, soluta sit.</p>
                         </div>
@@ -49,7 +49,7 @@ const Chat = () => {
                                 <AlertDialogTitle>
                                     <Image src={Avatar} alt='Avatar' className='rounded-full w-36 h-36' />
                                 </AlertDialogTitle>
-                                <AlertDialogDescription className="text-gray-300 flex flex-col gap-4">
+                                <AlertDialogDescription className="text-gray-300 flex flex-col gap-4 text-left">
                                     <h1 className="font-bold 2xl:text-lg">Description</h1>
                                     This action cannot be undone. This will permanently delete your account
                                     and remove your data from our servers.

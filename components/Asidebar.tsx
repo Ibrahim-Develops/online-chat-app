@@ -1,15 +1,23 @@
 "use client"
 
-import { IoCallOutline } from "react-icons/io5"
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { MdGroupAdd, MdGroups2 } from "react-icons/md";
-import { GrChat } from "react-icons/gr";
-import Image from 'next/image'
-import { usePathname } from 'next/navigation';  
+import { IoCallOutline } from "react-icons/io5"
+import { redirect, usePathname } from 'next/navigation';
+import { Input } from "@/components/ui/input"
+import { CiLogout } from "react-icons/ci";;
+import { GrChat } from "react-icons/gr"
 import Logo from '../assets/Lgo.png'
+import Image from 'next/image'
 import Link from "next/link";
+import { useState } from "react";
 
 const Asidebar = () => {
-    const pathname = usePathname();  
+    const pathname = usePathname();
+    const [add, setAdd] = useState()
+    const handlelogout = () => {
+        redirect('/login')
+    }
 
     return (
         <div>
@@ -20,7 +28,7 @@ const Asidebar = () => {
                     </div>
                     <div className='flex flex-col gap-4'>
                         <Link href="/chat/home" className={`bg-[#303030e1] 2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 h-10 w-10 text-white flex text-xl justify-center items-center rounded-full cursor-pointer`} >
-                            <GrChat className={`${pathname === "/chat/home" ? "text-[#ddff00]" : ""}`}/>
+                            <GrChat className={`${pathname === "/chat/home" ? "text-[#ddff00]" : ""}`} />
                         </Link>
                         <Link href="" className='bg-[#303030e1] 2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 h-10 w-10 text-white flex text-2xl justify-center items-center rounded-full cursor-pointer'>
                             <IoCallOutline />
@@ -30,8 +38,33 @@ const Asidebar = () => {
                         </Link>
                     </div>
                 </div>
-                <div className='bg-[#f4feb1] 2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 h-10 w-10 flex text-2xl justify-center items-center rounded-full cursor-pointer'>
-                    <MdGroupAdd />
+                <div className="flex flex-col gap-2">
+
+                    <AlertDialog>
+                        <AlertDialogTrigger>
+                            <div className='bg-[#f4feb1] 2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 h-10 w-10 flex text-2xl justify-center items-center rounded-full cursor-pointer'>
+                                <MdGroupAdd />
+                            </div>
+                        </AlertDialogTrigger>
+
+                        <AlertDialogContent className="bg-[#070707] text-white border-[1px] border-gray-700">
+                            <AlertDialogHeader>
+                                <AlertDialogTitle className="font-bold">
+                                        Add a User
+                                </AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        <Input placeholder="Please Enter Email To Add" className="border-[1px] border-gray-700"/>
+                                    </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                                <AlertDialogAction className="cursor-pointer">Done</AlertDialogAction>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
+
+                    <div onClick={()=>handlelogout()} className='bg-[#f4feb1] 2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 h-10 w-10 flex text-2xl justify-center items-center rounded-full cursor-pointer'>
+                        <CiLogout/>
+                    </div>
                 </div>
             </div>
         </div>
