@@ -8,6 +8,8 @@ import { Button } from './ui/button'
 import Link from 'next/link'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { redirect } from 'next/navigation'
+import { signIn } from '@/app/api/auth/[...nestauth]/auth'
+import { useRouter } from 'next/router'
 
 interface Inputs {
   username: string,
@@ -17,9 +19,24 @@ interface Inputs {
 
 const Login = () => {
   const { register, handleSubmit, watch, formState: { errors }, reset } = useForm<Inputs>();
-  const onSubmit = (data: Inputs) => {
-    console.log(data);
-    redirect('/chat/home')
+  const router = useRouter();
+
+  const onSubmit = async (data: Inputs) => {
+
+    const result = await signIn("credentials",
+      {
+        username: data.username,
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      })
+
+      if (result?.error) {
+        console.error("Login failed:", result.error);
+      } else {
+        router.push("/dashboard"); 
+      }
+
   }
 
   return (
