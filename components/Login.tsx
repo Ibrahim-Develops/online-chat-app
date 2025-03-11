@@ -1,41 +1,32 @@
 "use client"
 
-import Image from 'next/image'
-import Arrow from '../assets/arrow.png'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { login } from '@/app/serveractions/login.action'
 import Circle from '../assets/circle.png'
+import Arrow from '../assets/arrow.png'
 import Lines from '../assets/lines.png'
 import { Button } from './ui/button'
+import Image from 'next/image'
 import Link from 'next/link'
-import { SubmitHandler, useForm } from 'react-hook-form'
 import { redirect } from 'next/navigation'
-import { signIn } from '@/app/api/auth/[...nestauth]/auth'
-import { useRouter } from 'next/router'
 
 interface Inputs {
-  username: string,
   email: string,
-  password: string,
+  password: string
 };
 
 const Login = () => {
   const { register, handleSubmit, watch, formState: { errors }, reset } = useForm<Inputs>();
-  const router = useRouter();
 
   const onSubmit = async (data: Inputs) => {
-
-    const result = await signIn("credentials",
-      {
-        username: data.username,
-        email: data.email,
-        password: data.password,
-        redirect: false,
-      })
-
-      if (result?.error) {
-        console.error("Login failed:", result.error);
-      } else {
-        router.push("/dashboard"); 
-      }
+    
+    const res = await login(data)
+    reset()
+    if (res.error) {
+      console.log(res.error);
+    } else {
+      redirect('/chat/home')
+    }
 
   }
 
@@ -48,9 +39,10 @@ const Login = () => {
       <div className='w-full flex flex-col justify-center items-center'>
         <h1 className='font-bold font-mono text-5xl mb-5 text-left'>Login</h1>
         <form className='flex flex-col gap-8 relative 2xl:w-1/4 xl:w-1/4 lg:w-1/3 md:w-1/3 sm:w1/2 w-1/2' onSubmit={handleSubmit(onSubmit)}>
-          <input {...register("username")} type="text" placeholder='Username' className='border-b-2 border-white outline-none py-2 text-lg' />
           <input {...register("email")} type="text" placeholder='Email' className='border-b-2 border-white outline-none py-2 text-lg' />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
           <input {...register("password")} type="text" placeholder='Password' className='border-b-2 border-white outline-none py-2 text-lg' />
+          {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
           <Button className='bg-white text-black font-bold py-6 text-md hover:bg-white cursor-pointer rounded-none'>Login</Button>
         </form>
       </div>

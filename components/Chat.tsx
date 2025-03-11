@@ -1,26 +1,14 @@
 "use client"
 
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
-import { RiCloseLargeFill } from "react-icons/ri";
-import Avatar from '../assets/avatar.jpeg'
 import { IoPaperPlaneOutline } from "react-icons/io5";
+import { RiCloseLargeFill } from "react-icons/ri";
 import { GrAttachment } from "react-icons/gr";
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import Avatar from '../assets/avatar.jpeg'
+import Image from 'next/image';
 
 const Chat = () => {
-    const [currentTime, setCurrentTime] = useState("");
-
-    useEffect(() => {
-        const updateTime = () => {
-            const now = new Date();
-            setCurrentTime(now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true }));
-        };
-        updateTime();
-        const interval = setInterval(updateTime, 1000);
-        return () => clearInterval(interval);
-    }, []);
-
 
     return (
         <div className='h-full'>
@@ -34,7 +22,7 @@ const Chat = () => {
                         <div className='flex flex-col gap-2 mx-4'>
                             <div className='flex justify-between'>
                                 <h1 className='font-bold xl:text-xl'>Jhon Wick</h1>
-                                <div className="text-sm">{currentTime}</div>
+                                <div className="text-sm">12:00 PM</div>
                             </div>
                             <p className='font-thin text-sm lg:text-[16px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, optio quam autem dolorem quod accusantium odit eius porro. Natus a quam corporis velit repellat iste ullam quia tenetur atque ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate vitae soluta error culpa, quo praesentium obcaecati ducimus deleniti exercitationem! Doloribus libero vitae ex sit aut ad omnis optio asperiores quidem voluptatibus! Exercitationem, soluta sit.</p>
                         </div>

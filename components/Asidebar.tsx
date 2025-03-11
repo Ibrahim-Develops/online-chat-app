@@ -1,23 +1,19 @@
 "use client"
 
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
+import { redirect, usePathname, useRouter } from 'next/navigation';
 import { MdGroupAdd, MdGroups2 } from "react-icons/md";
 import { IoCallOutline } from "react-icons/io5"
-import { redirect, usePathname } from 'next/navigation';
 import { Input } from "@/components/ui/input"
-import { CiLogout } from "react-icons/ci";;
+import { CiLogout } from "react-icons/ci";
+import { signOut } from "next-auth/react";
 import { GrChat } from "react-icons/gr"
 import Logo from '../assets/Lgo.png'
 import Image from 'next/image'
 import Link from "next/link";
-import { useState } from "react";
 
 const Asidebar = () => {
     const pathname = usePathname();
-    const [add, setAdd] = useState()
-    const handlelogout = () => {
-        redirect('/login')
-    }
 
     return (
         <div>
@@ -48,13 +44,13 @@ const Asidebar = () => {
                         </AlertDialogTrigger>
 
                         <AlertDialogContent className="bg-[#070707] text-white border-[1px] border-gray-700">
+                            Add a User
                             <AlertDialogHeader>
                                 <AlertDialogTitle className="font-bold">
-                                        Add a User
                                 </AlertDialogTitle>
-                                    <AlertDialogDescription>
-                                        <Input placeholder="Please Enter Email To Add" className="border-[1px] border-gray-700"/>
-                                    </AlertDialogDescription>
+                                <AlertDialogDescription>
+                                    <Input placeholder="Please Enter Email To Add" className="border-[1px] border-gray-700" />
+                                </AlertDialogDescription>
                             </AlertDialogHeader>
                             <AlertDialogFooter>
                                 <AlertDialogAction className="cursor-pointer">Done</AlertDialogAction>
@@ -62,8 +58,8 @@ const Asidebar = () => {
                         </AlertDialogContent>
                     </AlertDialog>
 
-                    <div onClick={()=>handlelogout()} className='bg-[#f4feb1] 2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 h-10 w-10 flex text-2xl justify-center items-center rounded-full cursor-pointer'>
-                        <CiLogout/>
+                    <div className='bg-[#f4feb1] 2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 h-10 w-10 flex text-2xl justify-center items-center rounded-full cursor-pointer'>
+                        <CiLogout />
                     </div>
                 </div>
             </div>

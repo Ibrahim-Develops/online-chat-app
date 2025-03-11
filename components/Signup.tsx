@@ -1,13 +1,13 @@
 "use client"
 
-import Image from 'next/image'
-import Arrow from '../assets/arrow.png'
+import { useForm } from 'react-hook-form'
 import Circle from '../assets/circle.png'
 import Lines from '../assets/lines.png'
+import Arrow from '../assets/arrow.png'
 import { Button } from './ui/button'
-import axios from 'axios'
+import Image from 'next/image'
 import Link from 'next/link'
-import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 interface Inputs {
   username: string,
@@ -18,11 +18,9 @@ interface Inputs {
 const Signup = () => {
   const { register, handleSubmit, watch, formState: { errors }, reset } = useForm<Inputs>();
 
-
   const onSubmit = async (data: Inputs) => {
 
     try{
-
       const res = axios.post(`http://localhost:4000/auth/signup`, data, {withCredentials: true})
       console.log(await res)
     } catch (error: any) {
