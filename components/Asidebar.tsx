@@ -6,7 +6,6 @@ import { MdGroupAdd, MdGroups2 } from "react-icons/md";
 import { IoCallOutline } from "react-icons/io5"
 import { Input } from "@/components/ui/input"
 import { CiLogout } from "react-icons/ci";
-import { signOut } from "next-auth/react";
 import { GrChat } from "react-icons/gr"
 import Logo from '../assets/Lgo.png'
 import Image from 'next/image'
@@ -34,8 +33,8 @@ const Asidebar = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="flex flex-col gap-2">
 
+                <div className="flex flex-col gap-2">
                     <AlertDialog>
                         <AlertDialogTrigger>
                             <div className='bg-[#f4feb1] 2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 h-10 w-10 flex text-2xl justify-center items-center rounded-full cursor-pointer'>
@@ -58,10 +57,12 @@ const Asidebar = () => {
                         </AlertDialogContent>
                     </AlertDialog>
 
-                    <div className='bg-[#f4feb1] 2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 h-10 w-10 flex text-2xl justify-center items-center rounded-full cursor-pointer'>
+                    <div onClick={()=> redirect('/login')} className='bg-[#f4feb1] 2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 h-10 w-10 flex text-2xl justify-center items-center rounded-full cursor-pointer'>
                         <CiLogout />
                     </div>
+
                 </div>
+
             </div>
         </div>
     )

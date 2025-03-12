@@ -2,6 +2,7 @@ import Avatar from '../assets/avatar.jpeg';
 import Image from 'next/image';
 
 const ChatBar = () => {
+
   return (
     <div className='text-white mx-5 flex flex-col gap-3 overflow-hidden overflow-y-scroll scrollbar-hide w-full sm:w-full lg:w-full 2xl:w-1/2 grow'>
 

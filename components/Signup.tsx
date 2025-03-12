@@ -21,7 +21,7 @@ const Signup = () => {
   const onSubmit = async (data: Inputs) => {
 
     try{
-      const res = axios.post(`http://localhost:4000/auth/signup`, data, {withCredentials: true})
+      const res = axios.post(`http://localhost:3001/auth/signup`, data, {withCredentials: true})
       console.log(await res)
     } catch (error: any) {
       console.log("Signup Failed:", error);
